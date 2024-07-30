@@ -12,14 +12,6 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
-@app.route('/login.html') 
-def login():
-    return render_template('login.html')
-
-@app.route('/')
-def another_page():
-  return render_template('front.html') 
-
 mysql = MySQL(app)
 
 login_manager = LoginManager(app)
@@ -78,8 +70,8 @@ system.schedule.set_schedule("Vegetables", {"duration": 30, "frequency": "daily"
 system.schedule.set_schedule("Fruits", {"duration": 30, "frequency": "daily"})
 
 
-@app.route('/process_login', methods=['GET', 'POST'])
-def handle_login():
+@app.route('/login', methods=['GET', 'POST']) 
+def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -174,6 +166,13 @@ def delete_zone():
     return jsonify({'message': f'Zone "{zone_id}" deleted successfully!'})
   else:
     return jsonify({'error': 'Zone not found'}), 404
+
+@app.route('/')
+def another_page():
+    if current_user.is_authenticated:
+        return render_template('front.html')
+    else:
+        return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
