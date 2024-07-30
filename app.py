@@ -174,12 +174,7 @@ def delete_zone():
   else:
     return jsonify({'error': 'Zone not found'}), 404
 
-@app.route('/')
-def another_page():
-    if current_user.is_authenticated:
-        return render_template('front.html')
-    else:
-        return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
