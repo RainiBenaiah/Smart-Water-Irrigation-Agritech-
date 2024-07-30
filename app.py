@@ -4,9 +4,9 @@ from flask_mysqldb import MySQL
 from irrigation_system import IrrigationSystem, Zone, Plant, Schedule
 from sensors import Sensor, DataGenerator
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='template')
 
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['TEMPLATE_AUTO_RELOAD'] = True
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
