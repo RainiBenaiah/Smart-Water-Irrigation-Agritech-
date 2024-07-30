@@ -30,7 +30,7 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM registration WHERE id = %s", (user_id,))
+    cursor.execute("SELECT * FROM registrater WHERE id = %s", (user_id,))
     user_data = cursor.fetchone()
     cursor.close()
     if user_data:
