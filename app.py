@@ -76,7 +76,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM registration WHERE username = %s", (username,))
+        cursor.execute("SELECT * FROM register WHERE username = %s", (username,))
         user_data = cursor.fetchone()
         cursor.close()
         if user_data and user_data[3] == password:
