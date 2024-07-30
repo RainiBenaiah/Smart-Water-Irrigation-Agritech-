@@ -195,20 +195,6 @@ def delete_zone():
     return jsonify({'message': f'Zone "{zone_id}" deleted successfully!'})
   else:
     return jsonify({'error': 'Zone not found'}), 404
-  
-@app.route('/get_zones')
-def get_zones():
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM zones")
-    zones_data = cursor.fetchall()
-    cursor.close()
-    zones = []
-    for zone_data in zones_data:
-    zone_id, zone_name = zone_data
-    zones.append({'id': zone_id, 'name': zone_name})
-    return jsonify({'zones': zones})
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

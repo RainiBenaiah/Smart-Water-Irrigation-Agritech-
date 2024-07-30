@@ -260,3 +260,45 @@ section {
 .data-display button:hover {
   background-color: #5cb85c; /* Green hover color */
 }
+
+
+
+@media (max-width: 768px) {
+  .overview {
+    flex-direction: column;
+  }
+  .charts {
+    flex-direction: column;
+  }
+  /* Adjust card width */
+  .card {
+    flex: 1 1 100%; /* Make cards full width on mobile */
+  }
+  /* Adjust chart container width */
+  .chart-container {
+    flex: 1 1 100%; /* Make charts full width on mobile */
+  }
+  /* Adjust input field and button width */
+  .control-item input,
+  .zone-item input {
+    width: 100%; /* Make inputs full width */
+  }
+  .control-item button,
+  .zone-item button {
+    width: auto; /* Auto-adjust button width */
+  }
+  /* ... other mobile-specific styles ... */
+}
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    flex: 1 1 45%; /* Adjust card width for tablets */
+  }
+  .chart-container {
+    flex: 1 1 45%; /* Adjust chart width for tablets */
+  }
+  
+  /* ... other tablet-specific styles ... */
+}
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
