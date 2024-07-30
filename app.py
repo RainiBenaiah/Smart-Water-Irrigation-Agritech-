@@ -13,7 +13,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
 @app.route('/')
-def front():
+def another_page():
   return render_template('front.html') 
 
 mysql = MySQL(app)
