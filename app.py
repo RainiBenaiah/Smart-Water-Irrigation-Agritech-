@@ -78,8 +78,8 @@ system.schedule.set_schedule("Vegetables", {"duration": 30, "frequency": "daily"
 system.schedule.set_schedule("Fruits", {"duration": 30, "frequency": "daily"})
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/process_login', methods=['GET', 'POST'])
+def handle_login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
