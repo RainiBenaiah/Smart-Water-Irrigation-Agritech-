@@ -16,9 +16,6 @@ app.config['MYSQL_DB'] = 'test'
 def home():
   return render_template('front.html')
 
-@app.route('/login.html') 
-def handle_login():
-  return render_template('login.html')
 
 
 mysql = MySQL(app)
@@ -45,25 +42,31 @@ def load_user(user_id):
     if user_data:
         return User(user_data[0], user_data[1], user_data[2])
     return None
-
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
+    return render_template('login.html')
+@app.route('/process_login', methods=['GET', 'POST'])
+def handle_login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        print(f"Username: {username}, Password: {password}")  # Log the input
         cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM `register` WHERE username = %s", (username,))
+        cursor.execute("SELECT * FROM register WHERE username = %s", (username,))
         user_data = cursor.fetchone()
         cursor.close()
-        if user_data and user_data[3] == password:
+        if user_data and user_data[3] == password:  # Assuming password is at index 3
+            print("User found!")  # Log successful user lookup
             user = User(user_data[0], user_data[1], user_data[2])
             login_user(user)
-            return redirect(url_for('dashboard'))
+            print(f"Redirecting to {url_for('dashboard')}")  # Log the redirection URL
+            return redirect(url_for('dashboard')) 
         else:
+            print("Invalid username or password")  # Log authentication failure
             error = 'Invalid username or password'
             return render_template('login.html', error=error)
     return render_template('login.html')
+
 @app.route('/logout')
 @login_required
 def logout():
