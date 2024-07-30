@@ -12,6 +12,10 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
+@app.route('/login.html') 
+def login():
+    return render_template('login.html')
+
 @app.route('/')
 def another_page():
   return render_template('front.html') 
