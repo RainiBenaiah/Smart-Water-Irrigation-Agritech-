@@ -42,7 +42,7 @@ def load_user(user_id):
     if user_data:
         return User(user_data[0], user_data[1], user_data[2])
     return None
-@app.route('/login')
+@app.route('/login.')
 def login():
     return render_template('login.html')
 @app.route('/process_login', methods=['GET', 'POST'])
