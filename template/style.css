@@ -1,0 +1,277 @@
+body{
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  background-color: #163823;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.navbar ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li{
+  display: inline;
+  float: right;
+}
+.navbar a{
+ display: block;
+  color: #FFB91C;
+  text-align: center;
+  padding: 14px 16px; 
+  text-decoration: none;
+  font-family: ;
+}
+}
+.navbar a:hover{
+  background-color: #555;
+}
+.welcome{
+  background: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMzQ2NTQ4OTczMzMtcHVibGljLWltYWdlLWtvbnFybHZiLmpwZw.jpg') no-repeat center center/cover;
+text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  height: 100vh;
+}
+.welcome h1{
+  font-size: 60px;
+  color: #434444;
+  
+}
+.welcome p{
+  font-size: 30px;
+  color: #f0f0f0;
+  margin-top: 20px;
+}
+.welcome button{
+  background-color:hsl(110, 84%, 37%);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.Introduction{
+
+  text-align: center;
+  margin-top: 0px;
+  align-items: center;
+  min-height: 100vh;
+  background: #e1e6e2;
+}
+
+.Introduction h1{
+  font-weight: 700;
+font-size: 40px;
+  color: #333333;
+ font-family: "Fraunces", serif;
+
+  
+}
+.Introduction img{
+
+  float: left;
+  width: 50%;
+  height: 20%;
+  margin-top: 20;
+  border: 3px solid #fff;
+  border-radius: 10px;
+
+  }
+.Introduction p{
+  font-size: 25px;
+  color: #666666;
+  text-align: center;
+  
+}
+
+
+.Requirements {
+text-align: center;
+margin: 20px auto;
+align-items: center;
+min-height: 100vh;
+background: #eaecec;
+}
+
+.Requirements h1 {
+font-size: 40px;
+margin-bottom: 20px;
+}
+
+.Requirements p {
+margin-bottom: 30px;
+font: size 25px; ;
+}
+
+.install_image1, .install_image2 {
+float: left;
+width: 45%;
+box-sizing: border-box; /* Include padding and border in the width */
+margin: 0 2.5%; /* Create equal margins on both sides */
+}
+
+.install_image1 img, .install_image2 img {
+width: 100%;
+height: auto; /* Maintain aspect ratio */
+}
+
+.install_image1 p, .install_image2 p {
+text-align: center;
+margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+/* Adjust layout for smaller screens */
+.install_image1, .install_image2 {
+  float: none;
+  width: 100%;
+  margin: 20px 0;
+}
+}
+.Our_App{
+
+  text-align: center;
+  margin-top: 0px;
+  align-items: center;
+  min-height: 100vh;
+  background: #eae9ec;
+}
+
+.Our_App h1{
+  font-weight: 700;
+}
+.Our_App p{
+  font-size: 25px;
+  color: #666666;
+  text-align: center;
+  
+}
+
+.Our_App img{
+
+  float: center;
+  width: 50%;
+  height: 20%;
+  margin-top: 20;
+  border: 3px solid #fff;
+  border-radius: 10px;
+
+}
+ 
+.contact{
+  text-align: center;
+  margin-top: 0px;
+  align-items: center;
+  min-height: 100vh;
+  background: #7d2ae8;
+}
+
+.contact, .message{
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact , .message h1{
+  font-size: 30px;
+  color: #333333;
+}
+
+.contact , .message p{
+  font-size: 20px;
+  color: #666666;
+}
+
+.contact , .message, .form{
+  margin-top: 20px;
+  max-width: 600px; 
+  margin: auto; 
+  background-color: #B2C3D2; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.contact , .message, .form label {
+  display: block; 
+  margin-top: 10px;
+  color: #666; 
+}
+
+.contact , .message, .form input[type="number"], .form input[type="text"], .form input[type="email"], .form textarea {
+  width: 100%; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  margin-top: 5px; 
+}
+
+footer {
+    background-color: #f2f2f2; 
+    padding: 20px 0;  /* Add some padding */
+    text-align: left;  /* Align content to the left */
+    width: 100%;       /* Full width */
+    height: auto;       /* Let the height adjust automatically */
+    box-sizing: border-box; /* Include padding and border in the width */
+    font-family: 'Montserrat', sans-serif; /* Set font family */
+  }
+
+.footer {
+  background-color: #163823;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  border-top: 5px solid #5cb85c; 
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    float: none; /* Remove floating for vertical stacking */
+    text-align: left;
+  }
+  .navbar ul li {
+    display: block; /* Stack navigation items */
+    width: 100%;
+  }
+  .navbar a {
+    display: block; /* Block display for full width */
+  }
+  .install_image1, .install_image2 {
+    float: none;
+    width: 100%;
+    margin: 20px 0; /* Adjust margins */
+  }
+  .Our_App img {
+    width: 80%; /* Make image smaller on mobile */
+  }
+  .contact, .message {
+    width: 90%; /* Make form wider on mobile */
+  }
+}
+/* Tablet Styles (for screens smaller than 1024px) */
+@media (max-width: 1024px) {
+  .install_image1, .install_image2 {
+    width: 48%;
+    margin: 0 2%;
+  }
+  .Our_App img {
+    width: 70%;
+  }
+}
+

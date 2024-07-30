@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Irrigation Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Smart Irrigation Dashboard</h1>
+  </header>
+
+  <main>
+    <section class="overview">
+      <h2>System Overview</h2>
+      <div class="card">
+        <div class="card-title">Soil Moisture (Vegetables)</div>
+        <div class="card-value">
+          <span id="soil-moisture-vegetables">--%</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-water"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Soil Moisture (Fruits)</div>
+        <div class="card-value">
+          <span id="soil-moisture-fruits">--%</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-water"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Temperature</div>
+        <div class="card-value">
+          <span id="temperature-value">--°C</span>
+          <span class="unit">°C</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-thermometer"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Rainfall</div>
+        <div class="card-value">
+          <span id="rainfall-value">--</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-cloud-rain"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <h2>Recent Data</h2>
+      <div class="chart-container">
+        <canvas id="moistureChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+      </div>
+    </section>
+
+    <section class="controls">
+      <h2>System Controls</h2>
+      <div class="control-item">
+        <label for="irrigation-duration">Irrigation Duration:</label>
+        <input type="number" id="irrigation-duration" min="0" value="0">
+        <span class="unit">minutes</span>
+        <button id="start-irrigation">Start Irrigation</button>
+      </div>
+      <div class="control-item">
+        <button id="stop-irrigation">Stop Irrigation</button>
+      </div>
+    </section>
+
+    <section class="alerts">
+      <h2>Alerts & Notifications</h2>
+      <ul id="notification-list">
+        <!-- Notifications will be added here -->
+      </ul>
+    </section>
+
+    <section class="settings">
+      <h2>Settings</h2>
+      <div class="setting-item">
+        <label for="notification-frequency">Notification Frequency:</label>
+        <select id="notification-frequency">
+          <option value="immediate">Immediate</option>
+          <option value="hourly">Hourly</option>
+          <option value="daily">Daily</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label for="notification-channel">Notification Channel:</label>
+        <select id="notification-channel">
+          <option value="email">Email</option>
+          <option value="push">Push Notification</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+      <!-- Add more settings items as needed -->
+    </section>
+
+    <section class="zones">
+      <h2>Zones Management</h2>
+      <div class="zone-item" id="zone1">
+        <label for="zone1-name">Zone 1 Name:</label>
+        <input type="text" id="zone1-name" value="Vegetables">
+        <button id="zone1-edit">Edit</button>
+        <button id="zone1-delete">Delete</button>
+      </div>
+      <div class="zone-item">
+        <label for="zone1-schedule">Schedule:</label>
+        <input type="time" id="zone1-schedule" value="08:00">
+        <button id="zone1-schedule-edit">Edit</button>
+      </div>
+      <div class="zone-item" id="zone2">
+        <label for="zone2-name">Zone 2 Name:</label>
+        <input type="text" id="zone2-name" value="Fruits">
+        <button id="zone2-edit">Edit</button>
+        <button id="zone2-delete">Delete</button>
+      </div>
+      <div class="zone-item">
+        <label for="zone2-schedule">Schedule:</label>
+        <input type="time" id="zone2-schedule" value="09:00">
+        <button id="zone2-schedule-edit">Edit</button>
+      </div>
+      <button id="add-zone-button">Add Zone</button>
+      <!-- Add more zone items as needed -->
+    </section>
+
+    <section class="schedule-update">
+      <h2>Schedule Update</h2>
+      <div>
+        <label for="moisture-threshold">Moisture Threshold:</label>
+        <input type="number" id="moisture-threshold" value="0.3">
+      </div>
+      <div>
+        <label for="watering-duration">Watering Duration (minutes):</label>
+        <input type="number" id="watering-duration" value="30">
+      </div>
+      <button id="update-schedule-button">Update Schedule</button>
+    </section>
+
+    <section class="data-display">
+      <h2>Simulated Data</h2>
+      <p>Moisture (Vegetables): <span id="moisture-vegetables">--%</span></p>
+      <p>Moisture (Fruits): <span id="moisture-fruits">--%</span></p>
+      <p>Temperature: <span id="temperature">--°C</span></p>
+      <p>Rainfall: <span id="rainfall">--</span></p>
+      <button id="get-data-button">Get Data</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

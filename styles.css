@@ -1,0 +1,262 @@
+/* styles.css */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #163823;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 200px; /* Adjust flex to control card width */
+  text-align: center;
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.unit {
+  font-size: 0.8rem;
+  vertical-align: super;
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: #163823; /* Green color for icons */
+}
+
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-container {
+  flex: 1 1 300px; /* Adjust flex to control chart width */
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-item input {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.control-item button {
+  padding: 0.5rem 1rem;
+  background-color: #163823;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.control-item button:hover {
+  background-color: #5cb85c; /* Green hover color */
+}
+
+/* Chart styles (you can customize these further) */
+#moistureChart, #temperatureChart {
+  height: 200px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .overview {
+    flex-direction: column;
+  }
+  .charts {
+    flex-direction: column;
+  }
+  .chart-container {
+    flex: 1 1 100%; /* Make charts full width on mobile */
+  }
+}
+
+/* Use Boxicons for icons */
+.bx {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+
+/* styles.css */
+/* ... your existing styles ... */
+
+.alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#notification-list {
+  list-style: none;
+  padding: 0;
+}
+
+#notification-list li {
+  background-color: #f2f2f2;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.setting-item label {
+  font-weight: bold;
+}
+
+.setting-item select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.zones {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.zone-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.zone-item label {
+  font-weight: bold;
+}
+
+.zone-item input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1; /* Allow input field to take up available space */
+}
+
+.zone-item button {
+  padding: 0.5rem 1rem;
+  background-color: #163823;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.zone-item button:hover {
+  background-color: #5cb85c; /* Green hover color */
+}
+
+.schedule-update {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule-update label {
+  font-weight: bold;
+}
+
+.schedule-update input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.schedule-update button {
+  padding: 0.5rem 1rem;
+  background-color: #163823;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.schedule-update button:hover {
+  background-color: #5cb85c; /* Green hover color */
+}
+
+.data-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.data-display p {
+  margin-bottom: 10px;
+}
+
+.data-display button {
+  padding: 0.5rem 1rem;
+  background-color: #163823;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.data-display button:hover {
+  background-color: #5cb85c; /* Green hover color */
+}
