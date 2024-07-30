@@ -20,6 +20,9 @@ def another_page():
 def handle_login():
     return render_template('login.html')
 
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
 
 
 mysql = MySQL(app)
