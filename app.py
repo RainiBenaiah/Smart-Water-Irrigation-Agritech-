@@ -16,6 +16,9 @@ app.config['MYSQL_DB'] = 'test'
 def home():
   return render_template('front.html')
 
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
 
 
 mysql = MySQL(app)
@@ -42,10 +45,10 @@ def load_user(user_id):
     if user_data:
         return User(user_data[0], user_data[1], user_data[2])
     return None
-@app.route('/login.')
+@app.route('/login.html') 
 def login():
     return render_template('login.html')
-@app.route('/process_login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def handle_login():
     if request.method == 'POST':
         username = request.form['username']
@@ -144,6 +147,11 @@ def add_zone():
   # Add a sensor for the new zone (you might need to adjust this based on your setup)
   sensor_name = f"Moisture Sensor (Zone {len(system.zones)})"
   system.add_sensor(Sensor("Moisture Sensor", sensor_name, zone=new_zone))
+  # Save the zone to the database
+  cursor = mysql.connection.cursor()
+  cursor.execute("INSERT INTO zones (name) VALUES (%s)", (zone_name,))
+  mysql.connection.commit()
+  cursor.close()
   # Return a success message or redirect
   return jsonify({'message': f'Zone "{zone_name}" added successfully!'})
 
@@ -159,6 +167,11 @@ def edit_zone():
     # Update the schedule key if the zone name changes
     system.schedule.set_schedule(new_zone_name, system.schedule.get_schedule(zone_id))
     # You may also need to update other data related to the zone (like sensor names, etc.)
+    # Update the zone in the database
+    cursor = mysql.connection.cursor()
+    cursor.execute("UPDATE zones SET name = %s WHERE id = %s", (new_zone_name, zone_id))
+    mysql.connection.commit()
+    cursor.close()
     return jsonify({'message': f'Zone "{zone_id}" updated to "{new_zone_name}" successfully!'})
   else:
     return jsonify({'error': 'Zone not found'}), 404
@@ -174,9 +187,26 @@ def delete_zone():
     # Remove the schedule for this zone
     del system.schedule.zones[zone_id]
     # You might need to remove related sensors or other data as well
+    # Delete the zone from the database
+    cursor = mysql.connection.cursor()
+    cursor.execute("DELETE FROM zones WHERE id = %s", (zone_id,))
+    mysql.connection.commit()
+    cursor.close()
     return jsonify({'message': f'Zone "{zone_id}" deleted successfully!'})
   else:
     return jsonify({'error': 'Zone not found'}), 404
+  
+@app.route('/get_zones')
+def get_zones():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM zones")
+    zones_data = cursor.fetchall()
+    cursor.close()
+    zones = []
+    for zone_data in zones_data:
+    zone_id, zone_name = zone_data
+    zones.append({'id': zone_id, 'name': zone_name})
+    return jsonify({'zones': zones})
 
 
 

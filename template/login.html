@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="log.css">
   <title>Login Form</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='log.css') }}">
+  <script src="{{ url_for('static', filename='lon.js') }}"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -32,8 +33,8 @@
         <a href="#">forget password?</a>
 
       </div>
-      <button type="submit" class="btn">Login</button>
-       <button type="submit" class="btn">Register</button>
+      <button type="submit" class="btn" onclick="redirectPage()">Login</button>
+       <button type="submit" class="btn" onclick="redirectPage()">Register</button>
     </form>
   </div>
 </body>
