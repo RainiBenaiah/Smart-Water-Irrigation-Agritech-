@@ -13,16 +13,12 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
 @app.route('/')
-def another_page():
-  return render_template('front.html') 
+def home():
+  return render_template('front.html')
 
 @app.route('/login.html') 
 def handle_login():
-    return render_template('login.html')
-
-@app.route('/index.html')
-def index():
-    return render_template('index.html')
+  return render_template('login.html')
 
 
 mysql = MySQL(app)
@@ -49,6 +45,37 @@ def load_user(user_id):
     if user_data:
         return User(user_data[0], user_data[1], user_data[2])
     return None
+
+@app.route('/')
+def home():
+  return render_template('front.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM register WHERE username = %s", (username,))
+        user_data = cursor.fetchone()
+        cursor.close()
+        if user_data and user_data[3] == password:
+            user = User(user_data[0], user_data[1], user_data[2])
+            login_user(user)
+            return redirect(url_for('dashboard'))
+        else:
+            error = 'Invalid username or password'
+            return render_template('login.html', error=error)
+    return render_template('login.html')
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('index.html', user=current_user)
 
 # Initialize your irrigation system
 system = IrrigationSystem()
@@ -82,36 +109,7 @@ fruits.add_plant(grape)
 system.schedule.set_schedule("Vegetables", {"duration": 30, "frequency": "daily"})
 system.schedule.set_schedule("Fruits", {"duration": 30, "frequency": "daily"})
 
-
-@app.route('/login', methods=['GET', 'POST']) 
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM register WHERE username = %s", (username,))
-        user_data = cursor.fetchone()
-        cursor.close()
-        if user_data and user_data[3] == password:
-            user = User(user_data[0], user_data[1], user_data[2])
-            login_user(user)
-            return redirect(url_for('dashboard'))
-        else:
-            error = 'Invalid username or password'
-            return render_template('login.html', error=error)
-    return render_template('login.html')
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template('index.html')
-
+# Start the data generator
 @app.route('/get_data')
 def get_data():
     weather_data = system.get_weather_data()
