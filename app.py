@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 from irrigation_system import IrrigationSystem, Zone, Plant, Schedule
 from sensors import Sensor, DataGenerator
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['MYSQL_HOST'] = 'localhost'
@@ -13,7 +13,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
 @app.route('/')
-def another_page():
+def front():
   return render_template('front.html') 
 
 mysql = MySQL(app)
