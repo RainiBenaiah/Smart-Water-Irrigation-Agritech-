@@ -16,6 +16,9 @@ app.config['MYSQL_DB'] = 'test'
 def another_page():
   return render_template('front.html') 
 
+@app.route('/login.html') 
+def handle_login():
+    return render_template('login.html')
 
 
 
