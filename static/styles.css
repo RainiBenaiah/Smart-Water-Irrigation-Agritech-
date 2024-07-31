@@ -145,7 +145,7 @@ section {
 }
 
 #notification-list li {
-  background-color: #f2f2f2;
+  background-color: #3b5558;
   padding: 0.5rem;
   border-radius: 4px;
   margin-bottom: 0.5rem;
@@ -235,7 +235,7 @@ section {
 }
 
 .schedule-update button:hover {
-  background-color: #5cb85c; /* Green hover color */
+  background-color: #2c5f47; /* Green hover color */
 }
 
 .data-display {
@@ -261,7 +261,54 @@ section {
   background-color: #5cb85c; /* Green hover color */
 }
 
+/* Mobile-first layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  grid-gap: 10px;
+}
 
+/* Tablet layout */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+  }
+}
+
+/* Desktop layout */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
+  }
+}
+
+/* Card layout */
+.card {
+  /* ... base card styles ... */
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 48%; /* Adjust width for tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 32%; /* Adjust width for desktops */
+  }
+}
+
+/* Chart size */
+.chart-container {
+  /* ... base chart container styles ... */
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    width: 100%; /* Full width on mobile */
+  }
+}
 
 @media (max-width: 768px) {
   .overview {
