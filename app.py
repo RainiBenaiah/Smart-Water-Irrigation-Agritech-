@@ -20,6 +20,9 @@ def home():
 def index():
     return render_template('index.html')
 
+@app.route('/demo.html')
+def index():
+    return render_template('demo.html')
 
 mysql = MySQL(app)
 

@@ -11,7 +11,7 @@
 </head>
 <body>
   <header>
-    <h1>Smart Irrigation Dashboard</h1>
+    <h1>AgriTech Smart Dashboard</h1>
   </header>
 
   <main>
@@ -66,6 +66,7 @@
       <div class="chart-container">
         <canvas id="temperatureChart"></canvas>
       </div>
+      <button id="demo" onclick="redirectPage()">demo</button>
     </section>
 
     <section class="controls">
@@ -106,6 +107,24 @@
           <option value="both">Both</option>
         </select>
       </div>
+      <div class="setting-item">
+        <label for="notification-target">Irrigation Schedule Notifications:</label>
+        <select id="notification-target">
+          <option value="Schedule">Schedule changes</option>
+          <option value="watering">Watering start/stop</option>
+          <option value="Lickage">Unexpected watering</option>
+        </select>  
+      </div>
+      <div class="setting-item">
+        <label for="notification-system">System Status Notifications:</label>
+        <select id="notification-system">
+          <option value="Sensor">Sensor failures</option>
+          <option value="Pump">Pump issues</option>
+          <option value="power">Power outages</option>
+          <option value="System">System updates</option>
+        </select>
+      </div>
+      <button id="save-settings-button">Save Settings</button>
       <!-- Add more settings items as needed -->
     </section>
 

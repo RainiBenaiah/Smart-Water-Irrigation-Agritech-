@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Irrigation Dashboard</title>
+  <link rel="stylesheet" href="stls.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='stls.css') }}">
+  <script src="{{ url_for('static', filename='jv.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Smart Irrigation Dashboard</h1>
+  </header>
+
+  <main>
+    <section class="overview">
+      <h2>System Overview</h2>
+      <div class="card">
+        <div class="card-title">Soil Moisture</div>
+        <div class="card-value">
+          <span id="soil-moisture-value">--%</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-water"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Temperature</div>
+        <div class="card-value">
+          <span id="temperature-value">--°C</span>
+          <span class="unit">°C</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-thermometer"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Humidity</div>
+        <div class="card-value">
+          <span id="humidity-value">--%</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-droplet"></i>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Water Level</div>
+        <div class="card-value">
+          <span id="water-level-value">--L</span>
+          <span class="unit">L</span>
+        </div>
+        <div class="card-icon">
+          <i class="bx bx-water"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <h2>Recent Data</h2>
+      <div class="chart-container">
+        <canvas id="moistureChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+      </div>
+    </section>
+
+    <section class="controls">
+      <h2>System Controls</h2>
+      <div class="control-item">
+        <label for="irrigation-duration">Irrigation Duration:</label>
+        <input type="number" id="irrigation-duration" min="0" value="0">
+        <span class="unit">minutes</span>
+        <button id="start-irrigation">Start Irrigation</button>
+      </div>
+      <div class="control-item">
+        <button id="stop-irrigation">Stop Irrigation</button>
+      </div>
+    </section>
+
+    <section class="alerts">
+      <h2>Alerts & Notifications</h2>
+      <ul id="notification-list">
+        <!-- Notifications will be added here -->
+      </ul>
+    </section>
+
+    <section class="settings">
+      <h2>Settings</h2>
+      <div class="setting-item">
+        <label for="notification-frequency">Notification Frequency:</label>
+        <select id="notification-frequency">
+          <option value="immediate">Immediate</option>
+          <option value="hourly">Hourly</option>
+          <option value="daily">Daily</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label for="notification-channel">Notification Channel:</label>
+        <select id="notification-channel">
+          <option value="email">Email</option>
+          <option value="push">Push Notification</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+      <!-- Add more settings items as needed -->
+    </section>
+
+    <section class="zones">
+      <h2>Zones Management</h2>
+      <div class="zone-item">
+        <label for="zone1-name">Zone 1 Name:</label>
+        <input type="text" id="zone1-name" value="Zone 1">
+        <button id="zone1-edit">Edit</button>
+      </div>
+      <div class="zone-item">
+        <label for="zone1-schedule">Schedule:</label>
+        <input type="time" id="zone1-schedule" value="08:00">
+        <button id="zone1-schedule-edit">Edit</button>
+      </div>
+      <!-- Add more zone items as needed -->
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

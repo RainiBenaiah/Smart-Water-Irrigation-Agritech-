@@ -1,4 +1,9 @@
 // script.js
+
+function redirecTPage() {
+  window.location.href = "demo.html";
+}
+
 $(document).ready(function() {
   // Fetch data initially
   fetchData();
@@ -9,12 +14,12 @@ $(document).ready(function() {
   // Event listener for irrigation controls
   $("#start-irrigation").click(function() {
     // Get zone and duration from the dashboard
-    const zone = $("#zone1-name").val(); // Assuming you have a single zone for now
+    const zone = $("#zone1-name").val(); // incase I have a single zone for now
     const duration = $("#irrigation-duration").val();
 
     // Send irrigation command to the backend (using AJAX)
     $.ajax({
-      url: '/api/irrigate', // Adjust this if your Flask route is different
+      url: '/api/irrigate', // Adjust Flask route if needed
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ zone: zone, duration: duration }),
@@ -30,27 +35,39 @@ $(document).ready(function() {
   $("#stop-irrigation").click(function() {
     // Stop irrigation logic (send command to your system)
     console.log("Irrigation stopped!");
-    // You will need to add the AJAX call to your backend to stop the irrigation.
+    //  needed to add the AJAX call to the backend to stop the irrigation.
   });
 
   // Event listeners for settings
   $("#notification-frequency").change(function() {
     const selectedFrequency = $(this).val();
     console.log("Notification frequency changed to:", selectedFrequency);
-    // Add logic to save the frequency setting to your backend
+    //  save the frequency setting to the backend
   });
 
   $("#notification-channel").change(function() {
     const selectedChannel = $(this).val();
     console.log("Notification channel changed to:", selectedChannel);
-    // Add logic to save the channel setting to your backend
+    // save the channel setting to the backend
+  });
+
+  $("#notification-target").change(function() {
+    const selecteTarget = $(this).val();
+    console.log("Notification channel changed to:", selectedTarget);
+    // save the ch target to the backend
+  });
+
+  $("#notification-system").change(function() {
+    const selectedSystem = $(this).val();
+    console.log("Notification channel changed to:", selectedSystem);
+    //  save the system setting to the backend
   });
 
   // Event listeners for zones management
   $("#zone1-edit").click(function() {
     const newZone1Name = $("#zone1-name").val();
     $.ajax({
-      url: '/edit_zone', // Adjust this if your Flask route is different
+      url: '/edit_zone', // Adjust the Flask route if needed
       type: 'POST',
       data: {
         zone_id: "Vegetables", // Use the current zone name 
@@ -70,13 +87,13 @@ $(document).ready(function() {
   $("#zone1-schedule-edit").click(function() {
     const newZone1Schedule = $("#zone1-schedule").val();
     console.log("Zone 1 schedule updated to:", newZone1Schedule);
-    // Add logic to update the zone schedule in your backend
+    //  update the zone schedule in the backend
   });
 
   $("#zone2-edit").click(function() {
     const newZone2Name = $("#zone2-name").val();
     $.ajax({
-      url: '/edit_zone', // Adjust this if your Flask route is different
+      url: '/edit_zone', // Adjust  Flask route if needed
       type: 'POST',
       data: {
         zone_id: "Fruits", // Use the current zone name 
@@ -96,7 +113,7 @@ $(document).ready(function() {
   $("#zone2-schedule-edit").click(function() {
     const newZone2Schedule = $("#zone2-schedule").val();
     console.log("Zone 2 schedule updated to:", newZone2Schedule);
-    // Add logic to update the zone schedule in your backend
+    // update the zone schedule in the backend
   });
 
   $("#zone1-delete").click(function() {
@@ -147,7 +164,7 @@ $(document).ready(function() {
         },
         success: function(response) {
           console.log(response.message);
-          // Add the new zone to the UI (you'll need to create the HTML dynamically)
+          // Add the new zone to the UI (the HTML needs to be dynamically updated)
           // ... (Code to add new zone elements to the DOM) ...
         },
         error: function(error) {
@@ -163,7 +180,7 @@ $(document).ready(function() {
     const wateringDuration = $("#watering-duration").val();
 
     $.ajax({
-      url: '/update_schedule', // Adjust this if your Flask route is different
+      url: '/update_schedule', // Adjust withFlask route if needed
       type: 'POST',
       data: {
         moisture_threshold: moistureThreshold,
@@ -181,7 +198,7 @@ $(document).ready(function() {
   // Fetch data and update the dashboard
   function fetchData() {
     $.ajax({
-      url: '/get_data', // Adjust this if your Flask route is different
+      url: '/get_data', // Adjust with Flask route if needed
       type: 'GET',
       success: function(data) {
         $("#soil-moisture-vegetables").text(data.moisture.vegetables + "%");
@@ -207,13 +224,12 @@ $(document).ready(function() {
 
   // Update Chart.js charts with new data
   function updateMoistureChart(moistureData) {
-    // Assuming your 'moistureData' is in the format { vegetables: ..., fruits: ... }
-    //  You need to modify this based on the structure of your 'moistureData'
+    //  'moistureData' is in the format { vegetables: ..., fruits: ... }
     const moistureChartCanvas = document.getElementById("moistureChart");
     const moistureChart = new Chart(moistureChartCanvas, {
       type: "line", // or 'bar', 'radar', etc.
       data: {
-        labels: ["Vegetables", "Fruits"], // Labels for your chart
+        labels: ["Vegetables", "Fruits"], // Labels for the chart
         datasets: [{
           label: "Soil Moisture (%)",
           data: [moistureData.vegetables, moistureData.fruits], // Data for the chart
@@ -232,13 +248,12 @@ $(document).ready(function() {
   }
 
   function updateTemperatureChart(temperatureData) {
-    // Assuming your 'temperatureData' is a single value (e.g., 25)
-    // You might need to adjust this based on the structure of your 'temperatureData'
+    // if 'temperatureData' is a single value (e.g., 25)
     const temperatureChartCanvas = document.getElementById("temperatureChart");
     const temperatureChart = new Chart(temperatureChartCanvas, {
       type: "line", 
       data: {
-        labels: ["Time 1", "Time 2", "Time 3", "Time 4", "Time 5"], // Labels for your chart
+        labels: ["Time 1", "Time 2", "Time 3", "Time 4", "Time 5"], // Labels for the chart
         datasets: [{
           label: "Temperature (°C)",
           data: [temperatureData, temperatureData, temperatureData, temperatureData, temperatureData], // Data for the chart
@@ -270,48 +285,60 @@ $(document).ready(function() {
     notificationList.appendChild(listItem);
   }
 
-  // Example notification trigger (replace with actual logic)
+  //  notification trigger 
   setInterval(() => {
-    if (Math.random() < 0.1) { // Simulate a random notification
+    if (Math.random() < 0.5) { // Simulate a random notification
       addNotification("Warning: Low water level in Zone 1");
     }
-  }, 5000); // Trigger notifications every 5 seconds (for demonstration)
+  }, 10000); // Trigger notifications every 10 seconds (for demo)
 
   // Event listeners for settings
   $("#notification-frequency").change(function() {
     const selectedFrequency = $(this).val();
     console.log("Notification frequency changed to:", selectedFrequency);
-    // Add logic to save the frequency setting to your backend
+    // save the frequency setting to your backend
   });
 
   $("#notification-channel").change(function() {
     const selectedChannel = $(this).val();
     console.log("Notification channel changed to:", selectedChannel);
-    // Add logic to save the channel setting to your backend
+    // save the channel setting to the backend
+  });
+
+  $("#notification-target").change(function() {
+    const selectedTarget = $(this).val();
+    console.log("Notification Target changed to:", selectedTarget);
+    //  save the Target setting to the backend
+  });
+
+  $("#notification-system").change(function() {
+    const selectedSystem = $(this).val();
+    console.log("Notification system status changed to:", selectedSystem);
+    // save the channel setting to the backend
   });
 
   // Event listeners for zones management
   $("#zone1-edit").click(function() {
     const newZone1Name = $("#zone1-name").val();
     console.log("Zone 1 name updated to:", newZone1Name);
-    // Add logic to update the zone name in your backend
+    // update the zone name in the backend
   });
 
   $("#zone1-schedule-edit").click(function() {
     const newZone1Schedule = $("#zone1-schedule").val();
     console.log("Zone 1 schedule updated to:", newZone1Schedule);
-    // Add logic to update the zone schedule in your backend
+    //  update the zone schedule in the backend
   });
 
   $("#zone2-edit").click(function() {
     const newZone2Name = $("#zone2-name").val();
     console.log("Zone 2 name updated to:", newZone2Name);
-    // Add logic to update the zone name in your backend
+    //  update the zone name in the backend
   });
 
   $("#zone2-schedule-edit").click(function() {
     const newZone2Schedule = $("#zone2-schedule").val();
     console.log("Zone 2 schedule updated to:", newZone2Schedule);
-    // Add logic to update the zone schedule in your backend
+    //  update the zone schedule in the backend
   });
 });

@@ -3,14 +3,14 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #807f7f;
+  background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 header {
-  background-color: #035e26;
+  background-color: #163823;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -24,7 +24,7 @@ main {
 }
 
 section {
-  background-color: rgb(152, 155, 155);
+  background-color: white;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -131,7 +131,7 @@ section {
 }
 
 /* styles.css */
-
+/* ... your existing styles ... */
 
 .alerts {
   display: flex;
@@ -145,7 +145,7 @@ section {
 }
 
 #notification-list li {
-  background-color: #3b5558;
+  background-color: #f2f2f2;
   padding: 0.5rem;
   border-radius: 4px;
   margin-bottom: 0.5rem;
@@ -208,144 +208,3 @@ section {
 .zone-item button:hover {
   background-color: #5cb85c; /* Green hover color */
 }
-
-.schedule-update {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.schedule-update label {
-  font-weight: bold;
-}
-
-.schedule-update input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.schedule-update button {
-  padding: 0.5rem 1rem;
-  background-color: #163823;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.schedule-update button:hover {
-  background-color: #2c5f47; /* Green hover color */
-}
-
-.data-display {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.data-display p {
-  margin-bottom: 10px;
-}
-
-.data-display button {
-  padding: 0.5rem 1rem;
-  background-color: #163823;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.data-display button:hover {
-  background-color: #5cb85c; /* Green hover color */
-}
-
-/* Mobile-first layout */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column on mobile */
-  grid-gap: 10px;
-}
-
-/* Tablet layout */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
-  }
-}
-
-/* Desktop layout */
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
-  }
-}
-
-/* Card layout */
-.card {
-  /* ... base card styles ... */
-}
-
-@media (min-width: 768px) {
-  .card {
-    width: 48%; /* Adjust width for tablets */
-  }
-}
-
-@media (min-width: 1024px) {
-  .card {
-    width: 32%; /* Adjust width for desktops */
-  }
-}
-
-/* Chart size */
-.chart-container {
-  /* ... base chart container styles ... */
-}
-
-@media (max-width: 768px) {
-  .chart-container {
-    width: 100%; /* Full width on mobile */
-  }
-}
-
-@media (max-width: 768px) {
-  .overview {
-    flex-direction: column;
-  }
-  .charts {
-    flex-direction: column;
-  }
-  /* Adjust card width */
-  .card {
-    flex: 1 1 100%; /* Make cards full width on mobile */
-  }
-  /* Adjust chart container width */
-  .chart-container {
-    flex: 1 1 100%; /* Make charts full width on mobile */
-  }
-  /* Adjust input field and button width */
-  .control-item input,
-  .zone-item input {
-    width: 100%; /* Make inputs full width */
-  }
-  .control-item button,
-  .zone-item button {
-    width: auto; /* Auto-adjust button width */
-  }
-  /* ... other mobile-specific styles ... */
-}
-/* Medium screens (tablets) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .card {
-    flex: 1 1 45%; /* Adjust card width for tablets */
-  }
-  .chart-container {
-    flex: 1 1 45%; /* Adjust chart width for tablets */
-  }
-  
-  /* ... other tablet-specific styles ... */
-}
-/* Large screens (desktops) */
-@media (min-width: 1024px) {}

@@ -14,7 +14,7 @@ class Zone:
         self.plants.append(plant)
 
     def calculate_water_needs(self):
-        # Implement logic to determine water needs based on plants and weather
+        # determine water needs based on plants and weather
         pass
 
 class Plant:
@@ -65,9 +65,10 @@ class IrrigationSystem:
 
             # Check moisture level and adjust watering duration
             moisture_level = weather_data["moisture"][zone.name]
+         #I will add logic to check if it's raining and adjust watering duration
             if moisture_level < moisture_threshold:
                 schedule["duration"] = watering_duration  # Set the new duration
-            # ... (you can add more logic as needed)
+        
 
             # Update the schedule in the Schedule object
             self.schedule.set_schedule(zone.name, schedule)
@@ -77,3 +78,4 @@ class IrrigationSystem:
             schedule = self.schedule.get_schedule(zone.name)
             if schedule:
                 print(f"Watering {zone.name} for {schedule['duration']} minutes.")
+                #I will add logic to skip watering if it's raining
