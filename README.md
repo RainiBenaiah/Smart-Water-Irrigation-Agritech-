@@ -1,4 +1,4 @@
-Smart Irrigation System Dashboard
+Smart Water Irrigation System Dashboard
 This project implements a web-based dashboard for a smart irrigation system. The dashboard allows users to monitor sensor data, adjust irrigation schedules, and manage zones.
 
 Project Structure
