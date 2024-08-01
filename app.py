@@ -21,7 +21,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/demo.html')
-def index():
+def dem():
     return render_template('demo.html')
 
 mysql = MySQL(app)

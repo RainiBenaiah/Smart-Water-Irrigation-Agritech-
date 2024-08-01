@@ -1,6 +1,6 @@
 // script.js
 
-function redirecTPage() {
+function redirecPagey() {
   window.location.href = "demo.html";
 }
 
@@ -288,9 +288,9 @@ $(document).ready(function() {
   //  notification trigger 
   setInterval(() => {
     if (Math.random() < 0.5) { // Simulate a random notification
-      addNotification("Warning: Low water level in Zone 1");
+      addNotification("Warning: Low water level in All Zone ");
     }
-  }, 10000); // Trigger notifications every 10 seconds (for demo)
+  }, 60000); // Trigger notifications every 10 seconds (for demo)
 
   // Event listeners for settings
   $("#notification-frequency").change(function() {
